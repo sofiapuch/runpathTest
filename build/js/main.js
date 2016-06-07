@@ -1,7 +1,7 @@
 angular.module("runpathTest", ['ui.bootstrap'])
 
 	//main controller
-	.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
+	.controller('mainCtrl', ['$scope', '$http', 'filterFilter', function ($scope, $http, filterFilter) {
 
 		//pagination
         $scope.currentPage = 1;
@@ -11,6 +11,8 @@ angular.module("runpathTest", ['ui.bootstrap'])
 
 		$scope.galleryUrl = 'http://jsonplaceholder.typicode.com/photos';
 		$scope.loading = false;
+
+		$scope.filteredImages = [];
 		
 
 		// pagination 
@@ -42,4 +44,19 @@ angular.module("runpathTest", ['ui.bootstrap'])
 		    );
 		};
 
+		$scope.filterByTitle = function () {
+
+			console.log("search title: ", $scope.searchTitle);
+
+			if ($scope.searchTitle === "") $scope.loadImages();
+			$scope.filteredImages = filterFilter($scope.images, $scope.searchTitle);
+			$scope.images = $scope.filteredImages;
+			$scope.totalImages = $scope.filteredImages.length/$scope.imagesPerPage;
+		};
+
+
+
+
 	}]);
+
+
