@@ -4,15 +4,23 @@ module.exports = function(grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		//uglify: {
-		//	options: {
-		//		banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-		//	},
-		//	build: {
-		//		src: 'src/**/*.js',
-		//		dest: 'build/js/<%= pkg.name %>.min.js'
-		//	}
-		//},
+		concat: {
+			dist: {
+				src: 'src/**/*.js',
+				dest: 'build/js/main.js'
+			}	
+		},
+
+		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+			},
+			dist: {
+				files: {
+					'build/js/main.min.js': ['<%= concat.dist.dest %>']
+				}
+			}
+		},
 
 		jshint: {
 			files: ['Gruntfile.js', 'src/**/*.js'],
@@ -35,7 +43,7 @@ module.exports = function(grunt) {
 
 			hint: {
 				files: ['<%= jshint.files %>'],
-				tasks: ['jshint']
+				tasks: ['jshint', 'concat', 'uglify']
 			},
 
 			css: {
@@ -47,13 +55,14 @@ module.exports = function(grunt) {
 
 	});
 
-	//grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	
 	//default task
-	grunt.registerTask('default', ['jshint', /*'uglify',*/'sass',  'watch']);
+	grunt.registerTask('default', ['jshint', 'sass',  'watch']);
 	
 
 
