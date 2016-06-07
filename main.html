@@ -12,16 +12,26 @@
 
 	<div class="container" ng-app="runpathTest" ng-controller="mainCtrl">
 
-		<h1>Runpath gallery</h1>
+		<h1>Runpath Gallery</h1>
 		<section class="filter-section">
 			<div class="row">
-				<div class="col-md-4 col-sm-12">
+				<div class="col-sm-6 col-xs-12">
 					<form>
 						<div class="form-group">
 		  					<label for="title">Search by title</label>
 		  					<input type="text" class="form-control" id="title" ng-model="searchTitle" ng-change="filterByTitle()">
 						</div>
 					</form>
+				</div>
+			</div>
+		</section>
+
+		<section class="alert-section" ng-show="errorLoading">
+			<div class="row">
+				<div class="col-sm-6 col-xs-12">
+					<div class="alert alert-danger" ng-cloak>
+			  			<strong><i class="fa fa-exclamation-circle" aria-hidden="true"></i></strong> Error trying to load the images. Please, reload the page.
+					</div>
 				</div>
 			</div>
 		</section>
@@ -48,16 +58,12 @@
 		<section class="pagination-section">
 
 			<div class="row pagination-row">
-
-				<div class="col-xs-12">
+				<div class="col-xs-12" ng-cloak>
 					<uib-pagination total-items="totalImages" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
 				</div>
-
 			</div>
 
 		</section>
-
-
 
 	</div>
 

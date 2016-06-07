@@ -1,5 +1,13 @@
 /* color variables */
 /* elements */
+.filter-section {
+  margin: 20px auto; }
+
+.alert-section .alert-danger {
+  background-color: transparent;
+  border: none;
+  padding: 0px; }
+
 .gallery-section .overlay-spinner {
   position: fixed;
   z-index: 999;

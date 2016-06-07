@@ -7,6 +7,18 @@ $alto: #E0E0E0;
 
 /* elements */
 
+.filter-section {
+	margin: 20px auto;
+}
+
+.alert-section {
+	.alert-danger {
+	    background-color: transparent;
+    	border: none;
+    	padding: 0px;
+	}
+}
+
 .gallery-section {
 
 	.overlay-spinner {
