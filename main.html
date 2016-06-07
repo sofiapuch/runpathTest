@@ -12,10 +12,13 @@
 	<div class="container" ng-app="runpathTest" ng-controller="runpathTestCtrl">
 
 		<h1>gallery title</h1>
-
-		<div class="section search-title-section"></div>
+		<div class="section search-title-section"> add form here</div>
 
 		<div class="section gallery-section">
+
+			<div class="overlay-spinner" ng-show="loading">
+				<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+			</div>
 
 			<div class="row pagination-row">
 
@@ -29,7 +32,9 @@
 
 				<div class="row picture-row">
 
-					<div class="col-md-4 col-xs-12">
+					<div class="col-md-4 col-xs-12" ng-repeat="image in images">
+						<img src="{{image.thumbnailUrl}}" class="img-thumbnail">
+						<p class="img-title">{{image.title}}</p>
 					</div>
 
 				</div>
