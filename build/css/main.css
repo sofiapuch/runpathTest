@@ -1,4 +1,6 @@
-.overlay-spinner {
+/* color variables */
+/* elements */
+.gallery-section .overlay-spinner {
   position: fixed;
   z-index: 999;
   height: 2em;
@@ -9,5 +11,14 @@
   left: 0;
   bottom: 0;
   right: 0; }
+.gallery-section .thumbs-row .img-container {
+  background-color: #FCFBF8;
+  padding: 20px;
+  margin-bottom: 2em;
+  box-shadow: 1px 1px 5px #E0E0E0; }
+  .gallery-section .thumbs-row .img-container .img-thumbnail {
+    margin: 0px auto 15px;
+    padding: 0px;
+    display: block; }
 
 /*# sourceMappingURL=main.css.map */
