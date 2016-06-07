@@ -13,6 +13,7 @@
   right: 0; }
 .gallery-section .thumbs-row .img-container {
   background-color: #FCFBF8;
+  height: 250px;
   padding: 20px;
   margin-bottom: 2em;
   box-shadow: 1px 1px 5px #E0E0E0; }

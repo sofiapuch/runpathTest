@@ -1,9 +1,26 @@
-angular.module("runpathTest", [])
+angular.module("runpathTest", ['ui.bootstrap'])
 
-	.controller("runpathTestCtrl", ['$scope', '$http', function ($scope, $http) {
+	//main controller
+	.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
 
-		$scope.loading = false;
+		//pagination
+        $scope.currentPage = 1;
+        $scope.maxSize = 5;
+        $scope.bigTotalItems = 5;
+        $scope.imagesPerPage = 12;
+
 		$scope.galleryUrl = 'http://jsonplaceholder.typicode.com/photos';
+		$scope.loading = false;
+		
+
+		// pagination 
+        $scope.setPage = function (pageNo) {
+            $scope.currentPage = pageNo;
+        };
+
+        $scope.pageChanged = function() {
+            console.log('Page changed to: ' + $scope.currentPage);
+        };
 
 
 		//load the images for the API
@@ -14,7 +31,8 @@ angular.module("runpathTest", [])
 			$http.get($scope.galleryUrl)
 				.then(function (response) {
 
-					$scope.displayImages(response.data);
+					$scope.images = response.data;
+					$scope.totalImages = response.data.length/$scope.imagesPerPage;
 					$scope.loading = false;
 
 		    	}, function () {
@@ -23,22 +41,5 @@ angular.module("runpathTest", [])
 		    	}
 		    );
 		};
-
-
-		$scope.displayImages = function (images, page) {
-
-			$scope.images = images;
-			//pagination
-
-			console.log();
-
-
-
-		};
-
-
-
-
-
 
 	}]);
